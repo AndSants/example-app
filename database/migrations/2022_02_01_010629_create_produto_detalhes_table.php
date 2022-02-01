@@ -34,6 +34,10 @@ class CreateProdutoDetalhesTable extends Migration
      */
     public function down()
     {
+        Schema::table('produto_detalhes', function (Blueprint $table) {
+            $table->dropForeign('produto_detalhes_produto_id_foreign');
+            $table->dropColumn('produto_id');
+        });
         Schema::dropIfExists('produto_detalhes');
     }
 }
