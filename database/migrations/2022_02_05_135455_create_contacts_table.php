@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFornecedorsTable extends Migration
+class CreateContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateFornecedorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('fornecedors', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 50);
             $table->timestamps();
+            $table->string('name', 50);
+            $table->string('telephone', 20);
+            $table->string('email', 80);
+            $table->integer('reason_contact');
+            $table->text('message');
         });
     }
 
@@ -27,6 +31,6 @@ class CreateFornecedorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fornecedors');
+        Schema::dropIfExists('contacts');
     }
 }
