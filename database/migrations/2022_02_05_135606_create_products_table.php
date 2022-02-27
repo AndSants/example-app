@@ -23,11 +23,6 @@ class CreateProductsTable extends Migration
             $table->integer('maximum_stock')->default(1);
             $table->timestamps();
         });
-
-
-
-
-
     }
 
     /**
