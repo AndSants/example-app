@@ -8,7 +8,7 @@ class PrincipalController extends Controller
 {
     public function principal()
     {
-        $titulo = 'Home';
-        return view('site.principal', compact('titulo'));
+        $title = 'Home';
+        return view('site.principal', compact('title'));
     }
 }

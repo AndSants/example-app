@@ -18,23 +18,23 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'PrincipalController@principal')->name('site.index');
-Route::get('/sobre-nos', 'SobreNosController@sobrenos')->name('site.sobrenos');
-Route::get('/contato', 'ContatoController@contato')->name('site.contato');
-Route::post('/contato', 'ContatoController@contato')->name('site.contato');
+Route::get('/about_us', 'AboutUsController@about_us')->name('site.aboutus');
+Route::get('/contact', 'ContactController@contact')->name('site.contact');
+Route::post('/contact', 'ContactController@contact')->name('site.contact');
 
 Route::get('/login', 'LoginController@login')->name('site.login');
 
 Route::prefix('/app')->group(function(){
-    Route::get('/cliente', 'ClienteController@index')->name('app.cliente');
-    Route::get('/fornecedor', 'FornecedorController@index')->name('app.fornecedore');
-    Route::get('/produto', 'ProdutoController@index')->name('app.produto');
+    Route::get('/client', 'ClientController@index')->name('app.client');
+    Route::get('/provider', 'ProviderController@index')->name('app.provider');
+    Route::get('/product', 'ProductController@index')->name('app.product');
 });
 
 Route::fallback(function(){
     echo 'A rota acessada não exite. <a href="'.route('site.index').'">clique aqui</a> para retornar a página inicial.';
 });
 
-Route::get('teste/{p1}/{p2}', 'TesteController@teste')->name('teste');
+Route::get('test/{p1}/{p2}', 'TestController@test')->name('test');
 
 //passando parâmetros na rota
 // Route::get(

@@ -1,21 +1,21 @@
-@extends('site.layouts.basico')
+@extends('site.layouts.basic')
 
-@section('titulo', $titulo)
+@section('title', $title)
 
-@section('conteudo')
-    <div class="conteudo-destaque">
+@section('content')
+    <div class="featured-content">
 
-        <div class="esquerda">
-            <div class="informacoes">
+        <div class="display-left">
+            <div class="information">
                 <h1>Sistema Super Gestão</h1>
                 <p>Software para gestão empresarial ideal para sua empresa.<p>
-                <div class="chamada">
+                <div class="call">
                     <img src="{{ asset('/img/check.png') }}">
-                    <span class="texto-branco">Gestão completa e descomplicada</span>
+                    <span class="white-text">Gestão completa e descomplicada</span>
                 </div>
-                <div class="chamada">
+                <div class="call">
                     <img src="{{ asset('/img/check.png') }}">
-                    <span class="texto-branco">Sua empresa na nuvem</span>
+                    <span class="white-text">Sua empresa na nuvem</span>
                 </div>
             </div>
 
@@ -24,11 +24,11 @@
             </div>
         </div>
 
-        <div class="direita">
-            <div class="contato">
+        <div class="display-right">
+            <div class="contact">
                 <h1>Contato</h1>
                 <p>Caso tenha qualquer dúvida por favor entre em contato com nossa equipe pelo formulário abaixo.<p>
-                    @component('site.layouts.componentes.form_contato', ['classe' => 'borda-branca'])
+                    @component('site.layouts.components.form_contact', ['classe' => 'white-border'])
                     @endcomponent
             </div>
         </div>
