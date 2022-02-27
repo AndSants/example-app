@@ -3,8 +3,8 @@
 @section('title', $title)
 
 @section('content')
-<div class="page-content">
-    <div class="page-title">
+    <div class="page-content">
+        <div class="page-title">
             <h1>Entre em contato conosco</h1>
         </div>
 
