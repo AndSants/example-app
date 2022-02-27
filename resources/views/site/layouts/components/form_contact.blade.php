@@ -3,7 +3,7 @@
     @csrf
     <input name="name" type="text" placeholder="Nome" class="{{ $classe }}">
     <br>
-    <input name="phone" type="text" placeholder="Telefone" class="{{ $classe }}">
+    <input name="telephone" type="text" placeholder="Telefone" class="{{ $classe }}">
     <br>
     <input name="email" type="text" placeholder="E-mail" class="{{ $classe }}">
     <br>
