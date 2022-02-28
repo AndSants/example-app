@@ -18,7 +18,7 @@ class ContactFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email'=> $this->faker->unique()->safeEmail(),
-            'telephone'=> $this->faker->numerify('(##) #####-####'),
+            'telephone'=> $this->faker->numerify('###########'),
             'select_options_id' => $this->faker->numberBetween(1,4),
             'message' => $this->faker->text(),
         ];

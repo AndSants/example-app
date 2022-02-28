@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Models\SelectOption;
+// use App\Http\Middleware\LogAccessMiddleware;
 
 class ContactController extends Controller
 {
+    //middleare podem ser carregados nas rotas, controladores ou no Http\kernel
+    // public function __construct()
+    // {
+    //     $this->middleware(LogAccessMiddleware::class);
+    // }
+
     public function index()
     {
         $title = 'Contato';
@@ -20,13 +27,25 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         //validar request - faz uma requisição para rota anterior
-        $request->validate([
-            'name'              => 'required',
-            'telephone'         => 'required',
-            'email'             => 'required',
-            'reason_contact'    => 'required',
+        $request->validate(
+            [
+            'name'              => 'required|min:3',
+            'telephone'         => 'required|min:8',
+            'email'             => 'email',
+            'select_options_id' => 'required',
             'message'           => 'required|max:2000'
-        ]);
+            ],
+            [
+                'name.required'                 => 'O campo precisa ser preenchido',
+                'name.min'                      => 'Mínimo de 3 caracteres',
+                'telephone.required'            => 'O campo precisa ser preenchido',
+                'telephone.min'                 => 'Mínimo de 8 caracteres',
+                'email.email'                   => 'O campo precisa ser preenchido',
+                'select_options_id.required'    => 'O campo precisa ser preenchido',
+                'message.required'              => 'O campo precisa ser preenchido',
+                'message.max'                   => 'Máximo de 2000 caracteres',
+            ]
+        );
         /*
         //captura de requisição da página
         echo '<pre>';
@@ -56,5 +75,7 @@ class ContactController extends Controller
         $contatc = new Contact();
         $contatc->create($request->all()); //$fillable deve está definido no model
         */
+
+        return redirect()->route('site.index');
     }
 }

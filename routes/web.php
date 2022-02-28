@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use App\Http\Middleware\LogAccessMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+// Route::middleware(LogAccessMiddleware::class)
+//         ->get('/', 'PrincipalController@principal')
+//         ->name('site.index');
 Route::get('/', 'PrincipalController@principal')->name('site.index');
 Route::get('/about_us', 'AboutUsController@about_us')->name('site.aboutus');
 Route::get('/contact', 'ContactController@index')->name('site.contact');
