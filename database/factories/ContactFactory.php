@@ -19,7 +19,7 @@ class ContactFactory extends Factory
             'name' => $this->faker->name(),
             'email'=> $this->faker->unique()->safeEmail(),
             'telephone'=> $this->faker->numerify('(##) #####-####'),
-            'reason_contact' => $this->faker->numberBetween(1,10),
+            'select_options_id' => $this->faker->numberBetween(1,4),
             'message' => $this->faker->text(),
         ];
     }

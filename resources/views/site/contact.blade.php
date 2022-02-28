@@ -10,7 +10,7 @@
 
         <div class="page-information">
             <div class="main-contact">
-                @component('site.layouts.components.form_contact', ['classe' => 'black-border'])
+                @component('site.layouts.components.form_contact', ['classe' => 'black-border', 'reason_contacts' => $reason_contacts])
                     <p>A nossa equipe analisará sua mensagem e retornaremos em breve.</p>
                     <p>Nosso tempo médio de resposta é de 48 horas.</p>
                 @endcomponent

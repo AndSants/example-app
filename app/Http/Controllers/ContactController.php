@@ -4,25 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Models\SelectOption;
 
 class ContactController extends Controller
 {
     public function index()
     {
         $title = 'Contato';
+        $reason_contacts = SelectOption::where('name', '=', 'reason_contact')
+                                        ->get();
         //dd($_POST);
-        return view('site.contact', compact('title'));
+        return view('site.contact', compact('title','reason_contacts'));
     }
 
     public function store(Request $request)
     {
-        //validar request
+        //validar request - faz uma requisição para rota anterior
         $request->validate([
             'name'              => 'required',
             'telephone'         => 'required',
             'email'             => 'required',
             'reason_contact'    => 'required',
-            'message'           => 'required'
+            'message'           => 'required|max:2000'
         ]);
         /*
         //captura de requisição da página
