@@ -30,11 +30,11 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         $rules = [
-                    'user' => 'email',
-                    'password' => 'required|min:6'
+                    'user'      => 'email',
+                    'password'  => 'required|min:6'
                 ];
-        $feedback= [
-                        'user.email'    => 'O campo Usuário precisa ser preenchido',
+        $feedback = [
+                        'user.email'        => 'O campo Usuário precisa ser preenchido',
                         'password.required' => 'O campo Senha precisa ser preenchido',
                         'password.min'      => 'O campo Senha deve ter no mínimo 6 caracteres'
                     ];
@@ -42,8 +42,8 @@ class LoginController extends Controller
         //validar request - faz uma requisição para rota anterior se houver error
         $request->validate($rules,$feedback);
 
-        $email = $request->get('user');
-        $password = $request->get('password');
+        $email      = $request->get('user');
+        $password   = $request->get('password');
 
         $user = new User;
         $user_auth = $user->where('email', $email)
