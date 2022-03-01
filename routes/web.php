@@ -26,9 +26,10 @@ Route::get('/about_us', 'AboutUsController@about_us')->name('site.aboutus');
 Route::get('/contact', 'ContactController@index')->name('site.contact');
 Route::post('/contact', 'ContactController@store')->name('site.contact');
 
-Route::get('/login', 'LoginController@login')->name('site.login');
+Route::get('/login/{erro?}', 'LoginController@login')->name('site.login');
+Route::post('/login', 'LoginController@authenticate')->name('site.login');
 
-Route::middleware('autenticacao:ldap')->prefix('/app')->group(function(){
+Route::middleware('authenticate:padrao')->prefix('/app')->group(function(){
     Route::get('/client', 'ClientController@index')->name('app.client');
     Route::get('/provider', 'ProviderController@index')->name('app.provider');
     Route::get('/product', 'ProductController@index')->name('app.product');

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class AutenticacaoMiddleware
+class AuthenticateMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,24 +16,27 @@ class AutenticacaoMiddleware
      */
     public function handle(Request $request, Closure $next, $method_autenticate)
     {
+        session_start();
+        $auth = false;
+
         switch ($method_autenticate) {
             case 'ldap':
-                $method = 'Verifica usuário e senha no AD';
+                $auth = 'Verifica usuário e senha no AD';
                 break;
             case 'xyz':
-                $method = 'Verifica usuário e senha método xyz';
+                $auth = 'Verifica usuário e senha método xyz';
                 break;
             default:
-                $method = 'Verifica usuário e senha no banco de dados';
+                if(isset($_SESSION['email']) && $_SESSION['email'] != ''){
+                    $auth = true;
+                }
                 break;
         }
 
-        echo $method;
-
-        if(true){
+        if($auth){
             return $next($request);
         }else{
-            return Response('Acesso negado! Rota exige autenticação!!!');
+            return redirect()->route('site.login',['erro' => 2]);
         }
     }
 }
