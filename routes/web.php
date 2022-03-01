@@ -28,7 +28,7 @@ Route::post('/contact', 'ContactController@store')->name('site.contact');
 
 Route::get('/login', 'LoginController@login')->name('site.login');
 
-Route::prefix('/app')->group(function(){
+Route::middleware('autenticacao:ldap')->prefix('/app')->group(function(){
     Route::get('/client', 'ClientController@index')->name('app.client');
     Route::get('/provider', 'ProviderController@index')->name('app.provider');
     Route::get('/product', 'ProductController@index')->name('app.product');
