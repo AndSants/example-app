@@ -25,5 +25,5 @@ class Provider extends Model
       são adicionados como atributo do próprio objeto
       para que seja persistido seu valor no banco
     */
-    protected $fillable = ['name','email','site','fu'];
+    protected $fillable = ['name','email','site','federative_union'];
 }

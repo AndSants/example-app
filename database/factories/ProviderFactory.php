@@ -17,7 +17,7 @@ class ProviderFactory extends Factory
             'name' => $this->faker->name(),
             'email'=> $this->faker->unique()->safeEmail(),
             'site'=> $this->faker->companyEmail(),
-            'fu' => $this->faker->randomElement(['PE', 'PB', 'AL', 'CE', 'PI','MA','BA','RN','SE']),
+            'federative_union' => $this->faker->randomElement(['PE', 'PB', 'AL', 'CE', 'PI','MA','BA','RN','SE']),
         ];
     }
 }

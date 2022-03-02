@@ -16,7 +16,7 @@ class AddProviderSoftdeletesTable extends Migration
         Schema::table('providers', function (Blueprint $table) {
             $table->string('email', 50)->after('name');
             $table->string('site', 50)->after('email');
-            $table->string('fu', 2)->after('site');
+            $table->string('federative_union', 2)->after('site');
             $table->softDeletes();
         });
     }
@@ -29,7 +29,7 @@ class AddProviderSoftdeletesTable extends Migration
     public function down()
     {
         Schema::table('providers', function (Blueprint $table) {
-            $table->dropColumn(['email', 'site', 'fu']);
+            $table->dropColumn(['email', 'site', 'federative_union']);
             $table->dropSoftDeletes();
         });
     }

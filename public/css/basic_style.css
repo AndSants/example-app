@@ -158,6 +158,13 @@ button:hover {
     text-align: center;
 }
 
+.page-title-app {
+    padding: 70px 0px 10px 0px;
+    margin-bottom: 10px;
+    background-color: #2a9ee2;
+    text-align: center;
+}
+
 .page-information {
     text-align: center;
     margin-top: 30px;
@@ -186,4 +193,12 @@ button:hover {
 
 .social-networks img {
     margin: 0px 15px 0px 15px;
+}
+
+/********** PROVIDER ***********/
+
+.provider-form{
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
 }

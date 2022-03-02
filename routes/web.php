@@ -33,7 +33,11 @@ Route::middleware('authenticate:padrao')->prefix('/app')->group(function(){
     Route::get('/home', 'HomeController@index')->name('app.home');
     Route::get('/logout', 'AuthenticationController@logout')->name('app.logout');
     Route::get('/client', 'ClientController@index')->name('app.client');
-    Route::get('/provider', 'ProviderController@index')->name('app.provider');
+    Route::prefix('/provider')->group(function(){
+        Route::get('/provider', 'ProviderController@index')->name('app.provider');
+        Route::post('/provider/list', 'ProviderController@show')->name('app.provider.list');
+        Route::get('/provider/register', 'ProviderController@create')->name('app.provider.register');
+    });
     Route::get('/product', 'ProductController@index')->name('app.product');
 });
 
