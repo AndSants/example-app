@@ -7,7 +7,7 @@ use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 
-class LoginController extends Controller
+class AuthenticationController extends Controller
 {
     public function login(Request $request)
     {
@@ -56,9 +56,15 @@ class LoginController extends Controller
             $_SESSION['name'] = $user_auth->name;
             $_SESSION['email'] = $user_auth->email;
 
-            return redirect()->route('app.client');
+            return redirect()->route('app.home');
         }else{
             return redirect()->route('site.login',['erro' => 1]);
         }
+    }
+
+    public function logout(){
+        session_destroy();
+        return redirect()->route('site.index');
+
     }
 }

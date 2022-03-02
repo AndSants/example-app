@@ -8,6 +8,7 @@ class ClientController extends Controller
 {
     public function index()
     {
-        return view('app.client.index');
+        $title = 'Client';
+        return view('app.client.index', compact('title'));
     }
 }

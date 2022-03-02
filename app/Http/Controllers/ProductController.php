@@ -8,6 +8,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('app.product.index');
+        $title = 'Product';
+        return view('app.product.index', compact('title'));
     }
 }
