@@ -68,9 +68,16 @@ class ProviderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Request $request)
     {
         $title = 'Fornecedor Listar';
-        return view('app.provider.list', compact('title'));
+
+        $providers = Provider::where('name', 'like', '%'.$request->input('name').'%')
+                            ->orWhere('name', 'like', '%'.$request->input('name').'%')
+                            ->orWhere('name', 'like', '%'.$request->input('name').'%')
+                            ->orWhere('name', 'like', '%'.$request->input('name').'%')
+                            ->get();
+
+        return view('app.provider.list', compact('title', 'providers'));
     }
 }

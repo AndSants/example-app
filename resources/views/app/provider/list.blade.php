@@ -11,8 +11,35 @@
         @include('app.provider.menus_provider.menu')
 
         <div class="page-information">
-            <div class="provider-form">
-                ... Lista fornecedores ...
+            <div class="provider-form-list">
+                <table border="1" width="100%">
+                    <thead>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Site</th>
+                        <th>UF</th>
+                        <th>Data Cadastro</th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        @foreach ($providers as $provider)
+
+                            <tr>
+                                <td>{{ $provider->id }} </td>
+                                <td>{{ $provider->name }} </td>
+                                <td>{{ $provider->email }} </td>
+                                <td>{{ $provider->site }} </td>
+                                <td>{{ $provider->federative_union }} </td>
+                                <td>{{ $provider->created_at }} </td>
+                                <td><button>Editar</button></td>
+                                <td><button>Excluir</button></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
             </div>
         </div>
     </div>
