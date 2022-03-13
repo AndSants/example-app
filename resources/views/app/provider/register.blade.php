@@ -5,7 +5,7 @@
 @section('content')
     <div class="page-content">
         <div class="page-title-app">
-            <h1>Fornecedor - Cadastrar</h1>
+            <h1>{{ $title }}</h1>
         </div>
 
         @include('app.provider.menus_provider.menu')
@@ -15,15 +15,16 @@
                 {{ $message }}
                 <form action="{{ route('app.provider.register') }}" method="post">
                     @csrf
-                    <input type="text" name="name" value="{{ old('name') }}" placeholder="Nome" class="black-board">
+                    <input type="hidden" name="id" value="{{ $provider->id ?? '' }}">
+                    <input type="text" name="name" value="{{ $provider->name ?? old('name') }}" placeholder="Nome" class="black-board">
                     {{ $errors->has('name') ? $errors->first('name') : '' }}
-                    <input type="text" name="email" value="{{ old('email') }}" placeholder="E-mail" class="black-board">
+                    <input type="text" name="email" value="{{ $provider->email ?? old('email') }}" placeholder="E-mail" class="black-board">
                     {{ $errors->has('email') ? $errors->first('email') : '' }}
-                    <input type="text" name="site" value="{{ old('site') }}" placeholder="Site" class="black-board">
+                    <input type="text" name="site" value="{{ $provider->site ?? old('site') }}" placeholder="Site" class="black-board">
                     {{ $errors->has('site') ? $errors->first('site') : '' }}
-                    <input type="text" name="federative_union" value="{{ old('federative_union') }}" placeholder="UF" class="black-board">
+                    <input type="text" name="federative_union" value="{{ $provider->federative_union ?? old('federative_union') }}" placeholder="UF" class="black-board">
                     {{ $errors->has('federative_union') ? $errors->first('federative_union') : '' }}
-                    <button type="submit" class="black-board">Cadastrar</button>
+                    <button type="submit" class="black-board">{{ $provider->id != '' ? 'Atulizar' : 'Cadastrar'}}</button>
                 </form>
             </div>
         </div>

@@ -33,12 +33,14 @@
                                 <td>{{ $provider->site }} </td>
                                 <td>{{ $provider->federative_union }} </td>
                                 <td>{{ $provider->created_at }} </td>
-                                <td><button>Editar</button></td>
+                                <td><a href="{{ route('app.provider.edit', $provider->id) }}">Editar</a></td>
                                 <td><button>Excluir</button></td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+
+        {{ $providers->appends($request_all)->links() }}
 
             </div>
         </div>

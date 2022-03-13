@@ -7,11 +7,6 @@ use App\Models\Provider;
 
 class ProviderController extends Controller
 {
-
-
-    /**
-     * return view
-     */
     public function index()
     {
         $title = 'Fornecedor';
@@ -21,17 +16,12 @@ class ProviderController extends Controller
         //all(); retorna todos os registros
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request)
     {
         $title      = 'Fornecedor cadastrar';
         $message    = '';
 
-        if ($request->input('_token') != '') {
+        if ($request->input('_token') != '' && $request->input('id') == '') {
             $rules = [
                 'name'              => 'required|min:3|max:40',
                 'email'             => 'email',
@@ -59,25 +49,42 @@ class ProviderController extends Controller
             $message = 'Cadastro realizado com sucesso';
         }
 
+        if ($request->input('_token') != '' && $request->input('id') != '') {
+            $provider   = Provider::find($request->input('id'));
+            $update     = $provider->update($request->all());
+            $id         = $request->input('id');
+
+            if ($update) {
+                $message = 'Registro atualizado com sucesso!';
+            }else{
+                $message = 'Erro ao tentar atualizar registro!';
+            }
+
+            return redirect()->route('app.provider.edit', compact('id', 'message'));
+        }
+
         return view('app.provider.register', compact('title', 'message'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show(Request $request)
     {
         $title = 'Fornecedor Listar';
-
+        $request_all = $request->all();
         $providers = Provider::where('name', 'like', '%'.$request->input('name').'%')
                             ->orWhere('name', 'like', '%'.$request->input('name').'%')
                             ->orWhere('name', 'like', '%'.$request->input('name').'%')
                             ->orWhere('name', 'like', '%'.$request->input('name').'%')
-                            ->get();
+                            ->paginate(3);
 
-        return view('app.provider.list', compact('title', 'providers'));
+        return view('app.provider.list', compact('title', 'providers', 'request_all'));
     }
+
+    public function edit($id, $message = '')
+    {
+        $title      = 'Fornecedor - Atualizar';
+
+        $provider = Provider::find($id);
+        return view('app.provider.register', compact('title','message','provider'));
+    }
+
 }
