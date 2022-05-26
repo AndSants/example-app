@@ -24,7 +24,7 @@
                     {{ $errors->has('site') ? $errors->first('site') : '' }}
                     <input type="text" name="federative_union" value="{{ $provider->federative_union ?? old('federative_union') }}" placeholder="UF" class="black-board">
                     {{ $errors->has('federative_union') ? $errors->first('federative_union') : '' }}
-                    <button type="submit" class="black-board">{{ $provider->id != '' ? 'Atulizar' : 'Cadastrar'}}</button>
+                    <button type="submit" class="black-board">{{ !empty($provider->id) ? 'Atualizar' : 'Cadastrar' }}</button>
                 </form>
             </div>
         </div>

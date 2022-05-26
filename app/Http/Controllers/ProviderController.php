@@ -44,7 +44,7 @@ class ProviderController extends Controller
 
             $provider = new Provider;
             $provider->fill($request->all()); //$fillable deve está definido no model
-            $provider->save();
+            // $provider->save();
 
             $message = 'Cadastro realizado com sucesso';
         }
@@ -63,7 +63,7 @@ class ProviderController extends Controller
             return redirect()->route('app.provider.edit', compact('id', 'message'));
         }
 
-        return view('app.provider.register', compact('title', 'message'));
+        return view('app.provider.register', ['title' => $title, 'message' => $message, 'provider' => '']);
     }
 
     public function show(Request $request)
@@ -71,12 +71,12 @@ class ProviderController extends Controller
         $title = 'Fornecedor Listar';
         $request_all = $request->all();
         $providers = Provider::where('name', 'like', '%'.$request->input('name').'%')
-                            ->orWhere('name', 'like', '%'.$request->input('name').'%')
-                            ->orWhere('name', 'like', '%'.$request->input('name').'%')
-                            ->orWhere('name', 'like', '%'.$request->input('name').'%')
-                            ->paginate(3);
+                            ->where('email', 'like', '%'.$request->input('email').'%')
+                            ->where('site', 'like', '%'.$request->input('site').'%')
+                            ->where('federative_union', 'like', '%'.$request->input('federative_union').'%')
+                            ->paginate(2);
 
-        return view('app.provider.list', compact('title', 'providers', 'request_all'));
+        return view('app.provider.list', ['title' => $title, 'providers' => $providers, 'request_all' => $request_all]);
     }
 
     public function edit($id, $message = '')

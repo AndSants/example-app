@@ -35,8 +35,8 @@ Route::middleware('authenticate:padrao')->prefix('/app')->group(function(){
     Route::get('/client', 'ClientController@index')->name('app.client');
     // Route::controller(ProviderController::class)->group(function(){
         Route::get('/provider', 'ProviderController@index')->name('app.provider');
-        Route::post('/provider/list', 'ProviderController@show')->name('app.provider.list');
         Route::get('/provider/list', 'ProviderController@show')->name('app.provider.list');
+        Route::post('/provider/list', 'ProviderController@show')->name('app.provider.list');
         Route::get('/provider/register', 'ProviderController@create')->name('app.provider.register');
         Route::post('/provider/register', 'ProviderController@create')->name('app.provider.register');
         Route::get('/provider/edit/{id}/{message?}', 'ProviderController@edit')->name('app.provider.edit');

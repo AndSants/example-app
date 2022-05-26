@@ -39,9 +39,11 @@
                         @endforeach
                     </tbody>
                 </table>
-
-        {{ $providers->appends($request_all)->links() }}
-
+        {{ $providers->withQueryString()->appends($request_all)->links() }}
+        {{-- {{ $providers->appends(request()->all())->links() }} --}}
+        {{-- {{ $providers->appends([
+            'federative_union'  => Request::input('federative_union'),
+          ])->links() }} --}}
             </div>
         </div>
     </div>
